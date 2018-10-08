@@ -2,6 +2,22 @@ doctype html
 html
   head
     title= title
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
     link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
   body
+    div.topnav
+      a.icon(href='javascript:void(0);', onclick='openNav()')
+        i.fa.fa-bars.fa-lg
+      a.logo(href='localhost:3000/')
+        img(src='/images/logo.JPG' alt='logo')
+    div.sidenav#mySidenav
+      a.closebtn(href='javascript:void(0);', onclick='closeNav()') &times;
+      a(href='')
+      a(href='categorias') Categorias
+      a(href='fotografos') Fotografos
+      a(href='perfil') Perfil
+    script(src='/javascripts/sidebarToggle.js')
     block content
+    footer Footer
+
