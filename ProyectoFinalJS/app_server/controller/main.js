@@ -1,3 +1,3 @@
-module.exports.index=function(req,res){
-	res.render('index',{title:'Express'});
+module.exports.main = function(req,res){
+	res.render('perfil',{title:'Home'});
 }

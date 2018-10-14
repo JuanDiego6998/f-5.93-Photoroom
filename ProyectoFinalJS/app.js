@@ -4,11 +4,11 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var indexRouter = require('./app_server/routes/index');
-var usersRouter = require('./app_server/routes/users');
-var categoriasRouter = require('./app_server/routes/categorias')
-var fotografosRouter = require('./app_server/routes/fotografos')
-var perfilRouter = require('./app_server/routes/perfil')
+var indexRouter = require('/app_server/routes/index');
+var usersRouter = require('/app_server/routes/users');
+var categoriasRouter = require('/app_server/routes/categorias');
+var fotografosRouter = require('/app_server/routes/fotografos');
+var perfilRouter = require('/app_server/routes/perfil');
 
 var app = express();
 
