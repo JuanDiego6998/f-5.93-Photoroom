@@ -166,7 +166,7 @@ body{
 /* -------------- Contacto ------------------ */
 
 .contact-background{
-  background-image: url(img/HighLine-1.JPG);
+  background-image: url(../img/HighLine-1.JPG);
   background-color: #7F7F7FFF;
   background-position: center;
   -webkit-background-size: cover;
