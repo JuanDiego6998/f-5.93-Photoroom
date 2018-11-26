@@ -7,6 +7,7 @@
  html, body{
   margin: 0px;
   padding: 0px;
+  font-size: 1em;
 }
 
 h1, h2, h3, h4, h5, h6{
@@ -39,14 +40,14 @@ body{
   left: 0;
   background-color: #373737;
   overflow-x: hidden;
-  padding-top: 60px;
+  padding-top: 100px;
   transition: 0.5s;
 }
 
 .sidenav a {
   padding: 8px 8px 8px 32px;
   text-decoration: none;
-  font-size: 25px;
+  font-size: 1rem;
   color: white;
   display: block;
   transition: 0.3s;
@@ -163,6 +164,7 @@ body{
   -o-transform: rotate(-135deg);
   transform: rotate(-135deg);
 }
+
 /* -------------- Contacto ------------------ */
 
 .contact-background{
@@ -222,6 +224,8 @@ body{
     border: none;
     cursor: pointer;
 }
+
+/* ----------------------------------------------------------------------------- */
 
 .rectangulo {
   width: 100%;
@@ -423,4 +427,56 @@ body{
   body {
       padding: 0;
   }
+}
+
+/* Pefil Fotografo */
+
+.headerPerfil{
+  background-color: #373737;
+  height: 100vh;
+  display: grid; /*le digo que el display va a ser en grid */
+  grid-template-columns: 5fr 1fr 3fr 1fr; /* Le decimos que va a tener columnas de 3/10 1/10 5/10 y finalmente 1/10 */
+  grid-template-areas: "favorita . info ."; /* Le decimos que el area de 3fr se llama favorita despues viene vacio (.) despues el area de 5fr se llama info y luego viene un vacio */
+  margin-bottom: 5em;
+}
+
+.favoritaFotografo{
+  gird-area: favorita;
+  background-color: crimson;
+  background-image: url(../img/HorseshoeBend-2.JPG);
+  background-size: cover;
+  overflow: hidden;
+  -webkit-clip-path: polygon(0 0, 100% 0, calc(100% - 5vw) 100%, 0% 100%);
+  clip-path: polygon(0 0, 100% 0, calc(100% - 5vw) 100%, 0% 100%);
+}
+
+.fotoFotografo{
+  width: 100%;
+  height: auto;
+  position: relative;
+  z-index: 100;
+  margin-left: -8vw;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+/* Info Fotografo */
+
+.infoFotografo{
+  display: grid;
+  grid-template:
+    "titulo" min-content
+    "contenido" auto / 1fr;
+  grid-column-gap: 1.5em;
+  margin: auto;
+  
+}
+.text-networks{
+  color: #ce7e00;
+}
+
+/* ------------------------- Fotografos ---------------------------------- */
+
+.linkFotografo a:link{
+  color: black;
 }
