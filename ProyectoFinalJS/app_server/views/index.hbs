@@ -7,9 +7,9 @@
             <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
         </ol>
         <div class="carousel-inner" role="listbox">
-            <div class="carousel-item active" style="background-image: url('img/AntelopeValley-1.JPG')"></div>
-            <div class="carousel-item" style="background-image: url('img/Quilotoa_021118-1.JPG')"></div>
-            <div class="carousel-item" style="background-image: url('img/HorseshoeBend-2.JPG')"></div>
+            {{#each urldestacadas}}
+            <div class="carousel-item" style="background-image: url('{{this}}')"></div>
+            {{/each}}
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -41,31 +41,9 @@
         <hr />
         <div class="container">
             <div class="row mx-auto">
-                <button type="button" class="btn btn-secondary btn-lg mx-auto my-2">Nombre categoría</button>
-                <button type="button" class="btn btn-secondary btn-lg mx-auto my-2">Nombre categoría</button>
-                <button type="button" class="btn btn-secondary btn-lg mx-auto my-2">Nombre categoría</button>
-                <button type="button" class="btn btn-secondary btn-lg mx-auto my-2">Nombre categoría</button>
-                <button type="button" class="btn btn-secondary btn-lg mx-auto my-2">Nombre categoría</button>
-                <button type="button" class="btn btn-secondary btn-lg mx-auto my-2">Nombre categoría</button>
-                <button type="button" class="btn btn-secondary btn-lg mx-auto my-2">Nombre categoría</button>
-                <button type="button" class="btn btn-secondary btn-lg mx-auto my-2">Nombre categoría</button>
-                <button type="button" class="btn btn-secondary btn-lg mx-auto my-2">Nombre categoría</button>
-                <button type="button" class="btn btn-secondary btn-lg mx-auto my-2">Nombre categoría</button>
-                <button type="button" class="btn btn-secondary btn-lg mx-auto my-2">Nombre categoría</button>
-                <button type="button" class="btn btn-secondary btn-lg mx-auto my-2">Nombre categoría</button>
-                <button type="button" class="btn btn-secondary btn-lg mx-auto my-2">Nombre categoría</button>
-                <button type="button" class="btn btn-secondary btn-lg mx-auto my-2">Nombre categoría</button>
-                <button type="button" class="btn btn-secondary btn-lg mx-auto my-2">Nombre categoría</button>
-                <button type="button" class="btn btn-secondary btn-lg mx-auto my-2">Nombre categoría</button>
-                <button type="button" class="btn btn-secondary btn-lg mx-auto my-2">Nombre categoría</button>
-                <button type="button" class="btn btn-secondary btn-lg mx-auto my-2">Nombre categoría</button>
-                <button type="button" class="btn btn-secondary btn-lg mx-auto my-2">Nombre categoría</button>
-                <button type="button" class="btn btn-secondary btn-lg mx-auto my-2">Nombre categoría</button>
-                <button type="button" class="btn btn-secondary btn-lg mx-auto my-2">Nombre categoría</button>
-                <button type="button" class="btn btn-secondary btn-lg mx-auto my-2">Nombre categoría</button>
-                <button type="button" class="btn btn-secondary btn-lg mx-auto my-2">Nombre categoría</button>
-                <button type="button" class="btn btn-secondary btn-lg mx-auto my-2">Nombre categoría</button>
-                <button type="button" class="btn btn-secondary btn-lg mx-auto my-2">Nombre categoría</button>
+                {{#each categorias}}
+                <button type="button" class="btn btn-secondary btn-lg mx-auto my-2">{{this}}</button>
+                {{/each}}
             </div>
         </div>
     </div>
@@ -85,54 +63,26 @@
         </p>
     </div>
     <div class="container">
+        {{#each fotosdestacadas}}
         <div class="row">
             <div class="col-md-12">
                 <div class="card mb-4">
-                    <img class="card-img-top" src="img/AntelopeValley-2.JPG" alt="Card image cap">
+                    <img class="card-img-top" src="{{urlfoto}}" alt="imgDestacada">
                     <div class="card-body">
-                        <h2 class="card-title">Título de la foto</h2>
-                        <p class="card-text">Descripción de la foto</p>
-                        <a href="#" class="btn btn-secondary">Nombre fotógrafo &rarr;</a>
+                        <h2 class="card-title">{{titulofoto}}</h2>
+                        <p class="card-text">{{captionfoto}}</p>
+                        <a href="#" class="btn btn-secondary">{{fotografo}} &rarr;</a>
                     </div>
                     <div class="card-footer text-muted">
-                        Fecha y
-                        <a class="text-warning" href="#">Categoría</a>
+                        {{fechafoto}}
+                        {{#each tags}} 
+                        <a class="text-warning" href="#">{{this}}</a>
+                        {{/each}}
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card mb-4">
-                    <img class="card-img-top" src="img/Dumbo-2.JPG" alt="Card image cap">
-                    <div class="card-body">
-                        <h2 class="card-title">Título de la foto</h2>
-                        <p class="card-text">Descripción de la foto</p>
-                        <a href="#" class="btn btn-secondary">Nombre fotógrafo &rarr;</a>
-                    </div>
-                    <div class="card-footer text-muted">
-                        Fecha y
-                        <a class="text-warning" href="#">Categoría</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card mb-4">
-                    <img class="card-img-top" src="img/AntelopeValley-3.JPG" alt="Card image cap">
-                    <div class="card-body">
-                        <h2 class="card-title">Título de la foto</h2>
-                        <p class="card-text">Descripción de la foto</p>
-                        <a href="#" class="btn btn-secondary">Nombre fotógrafo &rarr;</a>
-                    </div>
-                    <div class="card-footer text-muted">
-                        Fecha y
-                        <a class="text-warning" href="#">Categoría</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+        {{/each}}
     </div>
 </section>
 <!-- *******************  Fin de fotos destacadas  *******************  -->

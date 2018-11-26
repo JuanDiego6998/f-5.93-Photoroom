@@ -246,3 +246,17 @@ module.exports.fotosReadOne = function (req, res) {
         });
     }
 };
+
+module.exports.fotosReadByTag = function (req, res, tag) {
+    fotografos
+        .find()
+        .select('fotos')
+        .find({tags: tag})
+        .exec(function (err) {
+            var response, fotos;
+            if (fotografo.fotos && fotografo.fotos.length > 0) {
+                sendJsonResponse(res, 200, response);
+            }
+        }
+        );
+}

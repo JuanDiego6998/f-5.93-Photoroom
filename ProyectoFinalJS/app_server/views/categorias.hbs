@@ -1,7 +1,7 @@
 <div class="rectangulo">
-    <img src="img/paisaje.jpg" width="100%" height="100%">
+    <img src="{{urlfotofondo}}" width="100%" height="100%">
     <div class='text-block'>
-        <h1>Categorías</h1>
+        <h1>{{title}}</h1>
     </div>
 </div>
 <br>
@@ -9,11 +9,9 @@
     <div class='row text-center pt-5'>
         <div class='col-md-12'>
             <div class='btn-group btn-group-lg btn-group-justified'>
-                <a href="#" class="btn btn-secondary">Paisaje</a>
-                <a href="#" class="btn btn-secondary">Retrato</a>
-                <a href="#" class="btn btn-secondary">Naturaleza</a>
-                <a href="#" class="btn btn-secondary">Arquitectura</a>
-                <a href="#" class="btn btn-secondary">Periodismo</a>
+                {{#each categorias}}
+                <a href="#" class="btn btn-primary">{{this}}</a>
+                {{/each}}
             </div>
         </div>
     </div>
@@ -21,51 +19,13 @@
     <div class="tz-gallery">
 
         <div class="row">
+            {{#each urlfotoslightbox}}
             <div class="col-sm-6 col-md-4">
-                <a class="lightbox" href="img/AntelopeValley-1.jpg">
-                    <img src="img/AntelopeValley-1.jpg" alt="Park">
+                <a class="lightbox" href="{{this}}">
+                    <img src="{{this}}" alt="fotoLightbox">
                 </a>
             </div>
-            <div class="col-sm-6 col-md-4">
-                <a class="lightbox" href="img/AntelopeValley-2.jpg">
-                    <img src="img/AntelopeValley-2.jpg" alt="Bridge">
-                </a>
-            </div>
-            <div class="col-sm-12 col-md-4">
-                <a class="lightbox" href="img/AntelopeValley-3.jpg">
-                    <img src="img/AntelopeValley-3.jpg" alt="Tunnel">
-                </a>
-            </div>
-            <div class="col-sm-6 col-md-4">
-                <a class="lightbox" href="img/HighLine-1.jpg">
-                    <img src="img/HighLine-1.jpg" alt="Coast">
-                </a>
-            </div>
-            <div class="col-sm-6 col-md-4">
-                <a class="lightbox" href="img/HorseshoeBend-2.jpg">
-                    <img src="img/HorseshoeBend-2.jpg" alt="Rails">
-                </a>
-            </div>
-            <div class="col-sm-6 col-md-4">
-                <a class="lightbox" href="img/paisaje3.jpg">
-                    <img src="img/paisaje3.jpg" alt="Traffic">
-                </a>
-            </div>
-            <div class="col-sm-6 col-md-4">
-                <a class="lightbox" href="img/paisaje4.jpg">
-                    <img src="img/paisaje4.jpg" alt="Rocks">
-                </a>
-            </div>
-            <div class="col-sm-6 col-md-4">
-                <a class="lightbox" href="img/paisaje5.jpg">
-                    <img src="img/paisaje5.jpg" alt="Benches">
-                </a>
-            </div>
-            <div class="col-sm-6 col-md-4">
-                <a class="lightbox" href="img/Quilotoa_021118-1.jpg">
-                    <img src="img/Quilotoa_021118-1.jpg" alt="Sky">
-                </a>
-            </div>
+            {{/each}}
         </div>
 
     </div>
