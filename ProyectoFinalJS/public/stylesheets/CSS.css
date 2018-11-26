@@ -441,7 +441,7 @@ body{
 }
 
 .favoritaFotografo{
-  gird-area: favorita;
+  grid-area: favorita;
   background-color: crimson;
   background-image: url(../img/HorseshoeBend-2.JPG);
   background-size: cover;
@@ -451,11 +451,13 @@ body{
 }
 
 .fotoFotografo{
-  width: 100%;
-  height: auto;
+  background-image: url(..\..\public\img\fotoPerfilFotografo.png); /* Esta cosa no funciona */
+  
+  width: 15em;
+  height: 30em;
   position: relative;
   z-index: 100;
-  margin-left: -8vw;
+  margin-left: -10vw;
   margin-top: auto;
   margin-bottom: auto;
 }
@@ -463,6 +465,7 @@ body{
 /* Info Fotografo */
 
 .infoFotografo{
+  grid-area: info;
   display: grid;
   grid-template:
     "titulo" min-content
