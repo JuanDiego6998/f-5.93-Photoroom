@@ -18,7 +18,7 @@ var routesAPI = require('./app_api/routes/indexAPI');
 
 var app = express();
 
-// view engine setup
+// view engine setup (Handlebars)
 app.engine('hbs', exphbs.engine);
 app.set('views', path.join(__dirname, 'app_server', 'views'));
 app.set('view engine', 'hbs');
