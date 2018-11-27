@@ -1,0 +1,3 @@
+db.fotografos.update({'nombre':'Paola Jaramillo'}, {'$set':{
+    fotolista: 'img/Paola Jaramillo.PNG'
+}})
