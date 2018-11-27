@@ -7,13 +7,14 @@ if (process.env.NODE_ENV === 'production') {
 	apiOptions.server = 'https://F_593.herokuapp.com';
 }
 //como pasar varios parametros de body al render
-var renderHome = function (req, res, fotoDestacada1/*, fotoDestacada2*/) {
+var renderHome = function (req, res, fotografos, bodyArray) {
 	res.render('index', {
 		title: 'Home',
+		fotografos: fotografos,
 		urldestacadas: [
-			fotoDestacada1.fotos.url,
-			'img/Quilotoa_021118-1.JPG',
-			'img/HorseshoeBend-2.JPG'
+			fotografos[0].urldestacada,
+			fotografos[1].urldestacada,
+			fotografos[2].urldestacada
 		],
 		categorias: [
 			'Naturaleza',
@@ -22,78 +23,91 @@ var renderHome = function (req, res, fotoDestacada1/*, fotoDestacada2*/) {
 			'Estudio'
 		],
 		fotosdestacadas: [{
-			urlfoto: fotoDestacada1.fotos.url,
-			titulofoto: fotoDestacada1.fotos.titulo,
-			captionfoto: fotoDestacada1.fotos.caption,
-			fotografo: fotoDestacada1.fotografo.nombre,
-			fechafoto: fotoDestacada1.fotos.fecha,
-			tags: fotoDestacada1.fotos.tags
+			urlfoto: fotografos[0].urldestacada,
+			fotografo: fotografos[0].nombre
 		},
 		{
-			urlfoto: 'img/Dumbo-2.JPG',
-			titulofoto: 'Titulo foto 2',
-			captionfoto: 'Caption foto 2',
-			fotografo: 'Fotografo 2',
-			fechafoto: 'Fecha foto 2',
-			tags: [
-				'tag1',
-				'tag2'
-			]
-		}/*,
+			urlfoto: fotografos[1].urldestacada,
+			fotografo: fotografos[1].nombre
+		},
 		{
-			urlfoto: fotoDestacada2.fotos.url,
-			titulofoto: fotoDestacada2.fotos.titulo,
-			captionfoto: fotoDestacada2.fotos.caption,
-			fotografo: fotoDestacada2.fotografo.nombre,
-			fechafoto: fotoDestacada2.fotos.fecha,
-			tags: fotoDestacada2.fotos.tags
-		}*/
+			urlfoto: fotografos[2].urldestacada,
+			fotografo: fotografos[2].nombre
+		}
 		]
 	});
 }
 
 module.exports.index = function (req, res) {
-	var requestOptionsOne, requestOptionsTwo;
-	var pathOne = apiOptions.server + '/api/fotografos/5bf9f4ac8a0dcf13e02127e4/fotos/5bfa00f2ee733f72d4038fae';
-	var pathTwo = apiOptions.server + '/api/fotografos/5bf9f4ac8a0dcf13e02127e4/fotos/5bfa00f2ee733f72d4038faf';
+	var requestOptionsOne;
+	var pathOne = apiOptions.server + '/api/fotografos';
 	requestOptionsOne = {
 		url: pathOne,
-		method: 'GET',
-		json: {}
-	};
-	requestOptionsTwo = {
-		url: pathTwo,
 		method: 'GET',
 		json: {}
 	};
 	request(
 		requestOptionsOne,
 		function (err, response, body) {
-			//var bodyOne = body;
-			renderHome(req, res, body);
-		}
-	);
-	//segundo request para segunda foto destacada, se necesita este body tambien
-	request(
-		requestOptionsTwo,
-		function (err, res, body) {
-			var bodyTwo = body;
+			for (var i = 0; i < body.length; i++) {
+				if (body.nombre === 'Camilo Sus' || body.nombre === 'Paola Jaramillo') {
+					var bodyArray = [body.urldestacada];
+				}
+			}
+			renderHome(req, res, body, bodyArray);
 		}
 	);
 }
 
-module.exports.perfil = function (req, res) {
+var renderPerfil = function (req, res, body) {
 	res.render('perfil', {
 		title: 'Perfil',
-		urlfotofondo: 'img/prin1080.jpg'
+		urlfotofondo: 'img/prin1080.jpg',
+		urlfotoperfil: body.fotoperfil,
+		nombre: body.nombre,
+		bio: body.bio,
+		fotos: body.fotos
+	});
+}
+
+module.exports.perfil = function (req, res) {
+	var requestOptions, path;
+	path = '/api/fotografos/' + req.params.fotografoid;
+	requestOptions = {
+		url: apiOptions.server + path,
+		method: 'GET',
+		json: {}
+	};
+	request(
+		requestOptions,
+		function(err, response, body){
+			renderPerfil(req, res, body);
+		}
+	)
+}
+
+var renderFotografos = function(req, res, body){
+	res.render('fotografos', {
+		title: 'Fotografos',
+		urlfotofondo: 'img/paisaje.jpg',
+		fotografos: body
 	});
 }
 
 module.exports.fotografos = function (req, res) {
-	res.render('fotografos', {
-		title: 'Fotografos',
-		urlfotofondo: 'img/paisaje.jpg'
-	});
+	var requestOptions, path;
+	path = '/api/fotografos';
+	requestOptions = {
+		url: apiOptions.server + path,
+		method: 'GET',
+		json: {}
+	};
+	request(
+		requestOptions,
+		function(err, response, body){
+			renderFotografos(req, res, body);
+		}
+	)
 }
 
 var renderCategorias = function (req, res, foto1) {
