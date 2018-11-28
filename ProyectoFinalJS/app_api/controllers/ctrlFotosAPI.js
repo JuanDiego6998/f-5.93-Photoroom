@@ -247,16 +247,28 @@ module.exports.fotosReadOne = function (req, res) {
     }
 };
 
-module.exports.fotosReadByTag = function (req, res, tag) {
-    fotografos
-        .find()
-        .select('fotos')
-        .find({tags: tag})
-        .exec(function (err) {
-            var response, fotos;
-            if (fotografo.fotos && fotografo.fotos.length > 0) {
-                sendJsonResponse(res, 200, response);
+module.exports.fotosReadByTag = function (req, res) {
+    if (req.params && req.params.tag) {
+        fotografos
+            .find({ 'fotos.tags': req.params.tag })
+            .select('fotos')
+            .exec(function (err, fotos) {
+                var response;
+                if (fotos && fotos.length > 0) {
+                    if (!fotos) {
+                        sendJsonResponse(rees, 404, {
+                            'message': 'tag not found'
+                        });
+                    } else {
+                        response = fotos;
+                        sendJsonResponse(res, 200, response);
+                    }
+                } else{
+                    sendJsonResponse(res, 404, {
+                        'message': 'No fotos found'
+                    });
+                }
             }
-        }
-        );
+            );
+    }
 }

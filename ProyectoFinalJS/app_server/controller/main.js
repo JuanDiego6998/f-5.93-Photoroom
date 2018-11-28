@@ -113,7 +113,7 @@ module.exports.fotografos = function (req, res) {
 var renderCategorias = function (req, res, foto1) {
 	res.render('categorias', {
 		title: 'Categorias',
-		urlfotofondo: 'img/paisaje.jpg',
+		urlfotofondo: /*foto1[Math.floor(Math.random()*foto1.length)]*/ 'img/AntelopeValley-1.jpg',
 		categorias: [
 			'Paisaje',
 			'Retrato',
@@ -137,7 +137,7 @@ var renderCategorias = function (req, res, foto1) {
 
 module.exports.categorias = function (req, res) {
 	var requestOptions, path;
-	path = '/api/fotografos/fotos';
+	path = '/api/fotografos/fotos' + req.params.tag;
 	requestOptions = {
 		url: apiOptions.server + path,
 		method: "GET",
